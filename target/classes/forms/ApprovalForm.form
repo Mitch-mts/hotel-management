@@ -1,0 +1,12 @@
+{
+  "components": [],
+  "type": "default",
+  "id": "approval_form",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.4.1"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 5
+}
