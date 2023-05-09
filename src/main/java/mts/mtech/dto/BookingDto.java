@@ -1,12 +1,13 @@
 package mts.mtech.dto;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import mts.mtech.enums.RoomType;
 
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @ToString
 public class BookingDto {

@@ -14,7 +14,7 @@
       <bpmn:incoming>Flow_1vwaf7t</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1vwaf7t" sourceRef="Activity_15hjrwh" targetRef="Event_0muhzo2" />
-    <bpmn:serviceTask id="Activity_1ccu5vy" name="GetGuestDetails" camunda:class="mts.mtech.delegates.GetGuestDetailsService">
+    <bpmn:serviceTask id="Activity_1ccu5vy" name="GetGuestDetails" camunda:asyncBefore="true" camunda:class="mts.mtech.delegates.GetGuestDetailsService">
       <bpmn:incoming>Flow_04rb0ww</bpmn:incoming>
       <bpmn:outgoing>Flow_1eheiv5</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -38,7 +38,7 @@
       <bpmn:incoming>Flow_0d114z2</bpmn:incoming>
       <bpmn:outgoing>Flow_1vwaf7t</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:exclusiveGateway id="Gateway_1psb54v" name="Is Guest Age Appropriate?">
+    <bpmn:exclusiveGateway id="Gateway_1psb54v" name="Is Guest Age Appropriate?" camunda:asyncBefore="true">
       <bpmn:incoming>Flow_1ndid0h</bpmn:incoming>
       <bpmn:outgoing>Flow_06puud5</bpmn:outgoing>
       <bpmn:outgoing>Flow_16tfre7</bpmn:outgoing>
