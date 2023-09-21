@@ -2,6 +2,7 @@ package mts.mtech.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import mts.mtech.enums.RoomType;
 import mts.mtech.status.BookingStatus;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -33,8 +34,8 @@ public class Booking implements Serializable {
     @OneToOne
     private Guest guest;
 
-    @OneToOne
-    private Room room;
+    @Enumerated(EnumType.STRING)
+    private RoomType roomType;
 
     @Column
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

@@ -5,11 +5,12 @@ import mts.mtech.domain.Guest;
 import mts.mtech.persistence.GuestRepository;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-@Service
+@Component
 @Slf4j
 public class GetGuestDetailsService implements JavaDelegate {
     private final GuestRepository guestRepository;
@@ -37,10 +38,12 @@ public class GetGuestDetailsService implements JavaDelegate {
 
             Guest result = guestRepository.save(guest);
             log.info("db result----->>{}", result);
+            delegateExecution.setVariable("guestId", result.getId());
 
         }catch (Exception e){
             log.error("GetGuestDetailsService error------->{}",e.getMessage());
-            throw new RuntimeException(e);
+            String message = "GetGuestDetailsService error------->" + e.getMessage();
+            throw new RuntimeException(message);
         }
     }
 }

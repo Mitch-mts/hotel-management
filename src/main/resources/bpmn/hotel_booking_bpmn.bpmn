@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_189mcus" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.4.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_189mcus" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.14.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
   <bpmn:process id="BookingProcessId" name="hotel_management_main" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_04rb0ww</bpmn:outgoing>
@@ -18,23 +18,23 @@
       <bpmn:incoming>Flow_04rb0ww</bpmn:incoming>
       <bpmn:outgoing>Flow_1eheiv5</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_1rp46di" name="Generate Business Key" camunda:class="mts.mtech.delegates.GenerateBusinesskeyService">
+    <bpmn:serviceTask id="Activity_1rp46di" name="Generate Business Key" camunda:asyncBefore="true" camunda:class="mts.mtech.delegates.GenerateBusinessKeyService">
       <bpmn:incoming>Flow_1eheiv5</bpmn:incoming>
       <bpmn:outgoing>Flow_1ff5eom</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:businessRuleTask id="Activity_1jgg9ce" name="Guest Age Limit check" camunda:resultVariable="accepted" camunda:decisionRef="guest_age_limit" camunda:mapDecisionResult="singleEntry">
+    <bpmn:businessRuleTask id="Activity_1jgg9ce" name="Guest Age Limit check" camunda:asyncBefore="true" camunda:resultVariable="accepted" camunda:decisionRef="guest_age_limit" camunda:mapDecisionResult="singleEntry">
       <bpmn:incoming>Flow_1dp8zmk</bpmn:incoming>
       <bpmn:outgoing>Flow_1ndid0h</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:businessRuleTask id="Activity_1ccg7ky" name="Room Type" camunda:resultVariable="roomAvailable" camunda:decisionRef="room_type" camunda:mapDecisionResult="singleEntry">
+    <bpmn:businessRuleTask id="Activity_1ccg7ky" name="Room Type" camunda:asyncBefore="true" camunda:resultVariable="roomAvailable" camunda:decisionRef="room_type" camunda:mapDecisionResult="singleEntry">
       <bpmn:incoming>Flow_06puud5</bpmn:incoming>
       <bpmn:outgoing>Flow_02a9mpe</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:userTask id="Activity_06v59sf" name="Check Booking details">
+    <bpmn:userTask id="Activity_06v59sf" name="Check Booking details" camunda:asyncBefore="true">
       <bpmn:incoming>Flow_1umhqt9</bpmn:incoming>
       <bpmn:outgoing>Flow_0hq80tg</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_15hjrwh" name="Process Payment" camunda:class="mts.mtech.delegates.ProcessPaymentService">
+    <bpmn:serviceTask id="Activity_15hjrwh" name="Process Payment" camunda:asyncBefore="true" camunda:class="mts.mtech.delegates.ProcessPaymentService">
       <bpmn:incoming>Flow_0d114z2</bpmn:incoming>
       <bpmn:outgoing>Flow_1vwaf7t</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -53,7 +53,7 @@
       <bpmn:incoming>Flow_0svhkqp</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0svhkqp" sourceRef="Activity_0kuu5zi" targetRef="Event_0plpkiu" />
-    <bpmn:serviceTask id="Activity_0kuu5zi" name="Update booking record" camunda:class="mts.mtech.delegates.UpdateBookingService">
+    <bpmn:serviceTask id="Activity_0kuu5zi" name="Update booking record" camunda:asyncBefore="true" camunda:class="mts.mtech.delegates.UpdateBookingService">
       <bpmn:incoming>Flow_16tfre7</bpmn:incoming>
       <bpmn:outgoing>Flow_0svhkqp</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -68,7 +68,7 @@
     <bpmn:sequenceFlow id="Flow_0wkqe74" name="No" sourceRef="Gateway_1y31zt3" targetRef="Activity_03ke3mp">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{roomAvailable=="No"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:serviceTask id="Activity_03ke3mp" name="Update booking record" camunda:class="mts.mtech.delegates.UpdateBookingService">
+    <bpmn:serviceTask id="Activity_03ke3mp" name="Update booking record" camunda:asyncBefore="true" camunda:class="mts.mtech.delegates.UpdateBookingService">
       <bpmn:incoming>Flow_0wkqe74</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5rz84</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -91,12 +91,12 @@
       <bpmn:incoming>Flow_0n33kj7</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0n33kj7" sourceRef="Activity_157jbev" targetRef="Event_1eguvwt" />
-    <bpmn:serviceTask id="Activity_157jbev" name="Update booking record" camunda:class="mts.mtech.delegates.UpdateBookingService">
+    <bpmn:serviceTask id="Activity_157jbev" name="Update booking record" camunda:asyncBefore="true" camunda:class="mts.mtech.delegates.UpdateBookingService">
       <bpmn:incoming>Flow_0t7o86j</bpmn:incoming>
       <bpmn:outgoing>Flow_0n33kj7</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_1dp8zmk" sourceRef="Activity_1qpl9th" targetRef="Activity_1jgg9ce" />
-    <bpmn:serviceTask id="Activity_1qpl9th" name="Create Booking" camunda:class="mts.mtech.delegates.CreateBookingService">
+    <bpmn:serviceTask id="Activity_1qpl9th" name="Create Booking" camunda:asyncBefore="true" camunda:class="mts.mtech.delegates.CreateBookingService">
       <bpmn:incoming>Flow_1ff5eom</bpmn:incoming>
       <bpmn:outgoing>Flow_1dp8zmk</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -123,37 +123,17 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="BookingProcessId">
-      <bpmndi:BPMNShape id="TextAnnotation_0xla9re_di" bpmnElement="TextAnnotation_0xla9re">
-        <dc:Bounds x="1100" y="285" width="100" height="55" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0a63fdt_di" bpmnElement="TextAnnotation_0a63fdt">
-        <dc:Bounds x="1780" y="299" width="100" height="55" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0tyh4qv_di" bpmnElement="TextAnnotation_0tyh4qv">
-        <dc:Bounds x="1440" y="299" width="100" height="55" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0muhzo2_di" bpmnElement="Event_0muhzo2">
+        <dc:Bounds x="1962" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1g274i0_di" bpmnElement="Activity_1ccu5vy">
         <dc:Bounds x="270" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1pww7cs_di" bpmnElement="Activity_1rp46di">
         <dc:Bounds x="430" y="137" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1x8r15s_di" bpmnElement="TextAnnotation_1x8r15s">
-        <dc:Bounds x="370" y="50" width="100" height="55" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1298e4k_di" bpmnElement="TextAnnotation_1298e4k">
-        <dc:Bounds x="530" y="50" width="280" height="84" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0muhzo2_di" bpmnElement="Event_0muhzo2">
-        <dc:Bounds x="1962" y="159" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kg5b9d_di" bpmnElement="Activity_1jgg9ce">
         <dc:Bounds x="770" y="137" width="100" height="80" />
@@ -210,18 +190,26 @@
         <dc:Bounds x="600" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_12iy2hw_di" bpmnElement="Association_12iy2hw">
-        <di:waypoint x="1040" y="314" />
-        <di:waypoint x="1100" y="306" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0hns45v_di" bpmnElement="Association_0hns45v">
-        <di:waypoint x="1740" y="318" />
-        <di:waypoint x="1780" y="316" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1keii6n_di" bpmnElement="Association_1keii6n">
-        <di:waypoint x="1390" y="318" />
-        <di:waypoint x="1440" y="316" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1x8r15s_di" bpmnElement="TextAnnotation_1x8r15s">
+        <dc:Bounds x="370" y="50" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1298e4k_di" bpmnElement="TextAnnotation_1298e4k">
+        <dc:Bounds x="530" y="50" width="280" height="84" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0xla9re_di" bpmnElement="TextAnnotation_0xla9re">
+        <dc:Bounds x="1100" y="285" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0a63fdt_di" bpmnElement="TextAnnotation_0a63fdt">
+        <dc:Bounds x="1780" y="299" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0tyh4qv_di" bpmnElement="TextAnnotation_0tyh4qv">
+        <dc:Bounds x="1440" y="299" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_04rb0ww_di" bpmnElement="Flow_04rb0ww">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="270" y="177" />
@@ -304,6 +292,10 @@
         <di:waypoint x="1690" y="360" />
         <di:waypoint x="1690" y="442" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dp8zmk_di" bpmnElement="Flow_1dp8zmk">
+        <di:waypoint x="700" y="177" />
+        <di:waypoint x="770" y="177" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_1dx59c6_di" bpmnElement="Association_1dx59c6">
         <di:waypoint x="356" y="137" />
         <di:waypoint x="384" y="105" />
@@ -312,9 +304,17 @@
         <di:waypoint x="516" y="137" />
         <di:waypoint x="530" y="121" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1dp8zmk_di" bpmnElement="Flow_1dp8zmk">
-        <di:waypoint x="700" y="177" />
-        <di:waypoint x="770" y="177" />
+      <bpmndi:BPMNEdge id="Association_12iy2hw_di" bpmnElement="Association_12iy2hw">
+        <di:waypoint x="1040" y="314" />
+        <di:waypoint x="1100" y="306" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0hns45v_di" bpmnElement="Association_0hns45v">
+        <di:waypoint x="1740" y="318" />
+        <di:waypoint x="1780" y="316" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1keii6n_di" bpmnElement="Association_1keii6n">
+        <di:waypoint x="1390" y="318" />
+        <di:waypoint x="1440" y="316" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
