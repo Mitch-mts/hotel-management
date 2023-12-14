@@ -12,7 +12,7 @@ public class GenerateBusinessKeyService implements JavaDelegate {
     public void execute(DelegateExecution delegateExecution) throws Exception {
         String idNumber = (String) delegateExecution.getVariable("idNumber");
         log.info("business key IdNumber------->>{}", idNumber);
-        String businessKey = "MTS-" + idNumber.substring(0,3);
+        String businessKey = "MTS-" + idNumber.replace("-","").replaceAll("\\s","");
         log.info("businessKey----->>{}", businessKey);
         delegateExecution.setProcessBusinessKey(businessKey);
     }
