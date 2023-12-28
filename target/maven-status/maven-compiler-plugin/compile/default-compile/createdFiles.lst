@@ -1,6 +1,8 @@
 mts/mtech/service/BookingServiceImpl.class
 mts/mtech/persistence/BaseRepository.class
+mts/mtech/configs/HistoryPlugin.class
 mts/mtech/persistence/BookingRepository.class
+mts/mtech/configs/CustomHistoryEvent.class
 mts/mtech/domain/Room$RoomBuilder.class
 mts/mtech/Application.class
 mts/mtech/controller/BookingController.class
@@ -10,14 +12,16 @@ mts/mtech/service/BookingService.class
 mts/mtech/status/BookingStatus.class
 mts/mtech/delegates/UpdateBookingService.class
 mts/mtech/dto/BookingDto$BookingDtoBuilder.class
-mts/mtech/delegates/GenerateBusinesskeyService.class
 mts/mtech/enums/RoomType.class
+mts/mtech/configs/CustomHistoryPluginConfigurator.class
 mts/mtech/domain/Guest.class
 mts/mtech/dto/BookingDto.class
+mts/mtech/configs/CustomHistoryEventHandler.class
 mts/mtech/domain/Guest$GuestBuilder.class
 mts/mtech/delegates/ProcessPaymentService.class
 mts/mtech/domain/Booking$BookingBuilder.class
 mts/mtech/persistence/RoomRepository.class
 mts/mtech/delegates/CreateBookingService.class
+mts/mtech/delegates/GenerateBusinessKeyService.class
 mts/mtech/delegates/GetGuestDetailsService.class
 mts/mtech/domain/Room.class
