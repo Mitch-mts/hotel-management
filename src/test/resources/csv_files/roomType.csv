@@ -1,0 +1,6 @@
+roomType|amount|roomAvailable
+STANDARD|50|No
+STANDARD|400|Yes
+LUXURY|1000|Yes
+LUXURY|800|No
+STANDARD_TWIN|800|Yes

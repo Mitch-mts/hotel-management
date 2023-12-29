@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_0is1c0t" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.14.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_0is1c0t" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.4.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
   <decision id="room_type" name="RoomType">
-    <decisionTable id="DecisionTable_01wyclo">
+    <decisionTable id="DecisionTable_01wyclo" hitPolicy="FIRST">
       <input id="Input_1" label="Room" camunda:inputVariable="roomType">
         <inputExpression id="InputExpression_1" typeRef="string">
           <text>roomType</text>
@@ -15,7 +15,7 @@
       <output id="Output_1" label="Room Available?" name="roomAvailable" typeRef="string" />
       <rule id="DecisionRule_1s1c9d6">
         <inputEntry id="UnaryTests_1i0rgct">
-          <text>"standard"</text>
+          <text>"STANDARD"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0kkuzj0">
           <text>amount &lt; "400"</text>
@@ -26,7 +26,7 @@
       </rule>
       <rule id="DecisionRule_1xjr1f3">
         <inputEntry id="UnaryTests_1twlxbo">
-          <text>"standard"</text>
+          <text>"STANDARD"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_03sz8lo">
           <text>amount = "400"</text>
@@ -37,10 +37,10 @@
       </rule>
       <rule id="DecisionRule_02upbux">
         <inputEntry id="UnaryTests_0szcy3j">
-          <text>"standard twin"</text>
+          <text>"STANDARD_TWIN"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_02d1zh6">
-          <text>amuont = "800"</text>
+          <text>amount = "800"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0zfcbx6">
           <text>"Yes"</text>
@@ -48,7 +48,7 @@
       </rule>
       <rule id="DecisionRule_0lf4esg">
         <inputEntry id="UnaryTests_0e80kxu">
-          <text>"standard twin"</text>
+          <text>"STANDARD_TWIN"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_06cc8wm">
           <text>amount &lt; "800"</text>
@@ -59,7 +59,7 @@
       </rule>
       <rule id="DecisionRule_1cos4oj">
         <inputEntry id="UnaryTests_0df5br5">
-          <text>"luxury"</text>
+          <text>"LUXURY"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_09rzc5m">
           <text>amount = "1000"</text>
@@ -70,7 +70,7 @@
       </rule>
       <rule id="DecisionRule_1bs7j93">
         <inputEntry id="UnaryTests_11c49t0">
-          <text>"luxury"</text>
+          <text>"LUXURY"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0yxiggj">
           <text>amount &lt; "1000"</text>
