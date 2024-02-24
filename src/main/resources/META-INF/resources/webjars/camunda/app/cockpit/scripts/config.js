@@ -1,8 +1,12 @@
 export default {
     customScripts: [
-        'historyPluginCockpitRoute.js',
-        'historyPluginRuntimeTab.js',
+        'scripts/bpm-viewer.js',
+        'scripts/historyPluginCockpitRoute.js',
+        'scripts/historyPluginRuntimeTab.js',
     ],
+    bpmnJs: {
+        additionalModules: [],
+    },
     disableWelcomeMessage: true,
     previewHtml: true
 }
