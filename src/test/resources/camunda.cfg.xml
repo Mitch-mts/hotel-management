@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://camunda.org/schema/1.0/camunda ">
+
+    <!-- Database Configuration -->
+    <bean id="processEngineConfiguration" class="org.camunda.bpm.engine.spring.SpringProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="databaseSchemaUpdate" value="true"/>
+        <property name="jobExecutorActivate" value="true"/>
+        <property name="history" value="full"/>
+    </bean>
+
+    <!-- Data Source Configuration -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/hotel_management"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="BigMitch@123"/>
+    </bean>
+
+    <!-- Transaction Manager Configuration -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- Process Engine Configuration -->
+    <bean id="processEngine" class="org.camunda.bpm.engine.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
+    </bean>
+
+    <!-- Job Executor Configuration -->
+    <bean id="jobExecutor" class="org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor">
+        <property name="taskExecutor" ref="taskExecutor"/>
+    </bean>
+
+    <!-- Task Executor Configuration -->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5"/>
+        <property name="maxPoolSize" value="20"/>
+        <property name="queueCapacity" value="10"/>
+    </bean>
+</beans>

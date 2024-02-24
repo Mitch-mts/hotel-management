@@ -40,9 +40,17 @@ eureka:
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://localhost:8762/eureka/
     healthcheck:
       enabled: true
+
+
+logging:
+  file:
+    name: mts/logs/hotel-management.log
+  level:
+    root: info
+    mts.mtech.useraccountsv2: debug
