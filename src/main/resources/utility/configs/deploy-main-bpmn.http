@@ -1,0 +1,10 @@
+### Deploy main bpm process
+POST localhost:8635/engine-rest/deployment/create
+Content-Type: multipart/form-data; boundary=WebappBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="hotel_booking_bpmn.bpmn"
+
+< ../../../../bpmn/hotel_booking_bpmn.bpmn
+--WebAppBoundary--
+###

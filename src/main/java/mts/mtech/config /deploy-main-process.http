@@ -1,8 +1,0 @@
-POST http://localhost:8635/engine-rest/deployment/create
-Content-Type: multipart/form-data; boundary=WebAppBoundary
-
---WebAppBoundary
-Content-Disposition: form-data; name="file"; filename="hotel_booking_bpmn.bpmn"
-
-<../../resources/bpmn/hotel_booking_bpmn.bpmn
---WebAppBoundary--
