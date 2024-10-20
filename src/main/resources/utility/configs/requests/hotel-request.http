@@ -1,0 +1,15 @@
+### GET request to example server
+POST http://localhost:8635/v1/booking
+Content-Type: application/json
+
+{
+  "name": "Mario",
+  "idNumber": "54 44588755 K 11",
+  "amount": "400",
+  "daysOfStay": 10,
+  "roomType": "STANDARD",
+  "age": 25
+}
+
+###
+
