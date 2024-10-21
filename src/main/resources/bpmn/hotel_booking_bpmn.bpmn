@@ -14,11 +14,11 @@
       <bpmn:incoming>Flow_0dov4c8</bpmn:incoming>
       <bpmn:inputSet />
     </bpmn:endEvent>
-    <bpmn:serviceTask id="Activity_1ccu5vy" name="GetGuestDetails" camunda:asyncBefore="true" implementation="##WebService" camunda:class="mts.mtech.delegates.GetGuestDetailsService">
+    <bpmn:serviceTask id="Activity_1ccu5vy" name="GetGuestDetails" camunda:asyncBefore="true" implementation="##WebService" camunda:delegateExpression="${GetGuestDetailsService}">
       <bpmn:incoming>Flow_0e04ri3</bpmn:incoming>
       <bpmn:outgoing>Flow_0rsru60</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_1rp46di" name="Generate Business Key" camunda:asyncBefore="true" implementation="##WebService" camunda:class="mts.mtech.delegates.GenerateBusinessKeyService">
+    <bpmn:serviceTask id="Activity_1rp46di" name="Generate Business Key" camunda:asyncBefore="true" implementation="##WebService" camunda:delegateExpression="${GenerateBusinessKeyService}">
       <bpmn:incoming>Flow_0rsru60</bpmn:incoming>
       <bpmn:outgoing>Flow_0n9ngkx</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -34,7 +34,7 @@
       <bpmn:incoming>Flow_1m53k5y</bpmn:incoming>
       <bpmn:outgoing>Flow_19e4wmh</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_15hjrwh" name="Process Payment" camunda:asyncBefore="true" implementation="##WebService" camunda:class="mts.mtech.delegates.ProcessPaymentService">
+    <bpmn:serviceTask id="Activity_15hjrwh" name="Process Payment" camunda:asyncBefore="true" implementation="##WebService" camunda:delegateExpression="${ProcessPaymentService}">
       <bpmn:incoming>Flow_12hmfdn</bpmn:incoming>
       <bpmn:outgoing>Flow_0dov4c8</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -47,7 +47,7 @@
       <bpmn:incoming>Flow_15ydxkd</bpmn:incoming>
       <bpmn:inputSet />
     </bpmn:endEvent>
-    <bpmn:serviceTask id="Activity_0kuu5zi" name="Update booking record" camunda:asyncBefore="true" implementation="##WebService" camunda:class="mts.mtech.delegates.UpdateBookingService">
+    <bpmn:serviceTask id="Activity_0kuu5zi" name="Update booking record" camunda:asyncBefore="true" implementation="##WebService" camunda:delegateExpression="${UpdateBookingService}">
       <bpmn:incoming>Flow_0jgr4i3</bpmn:incoming>
       <bpmn:outgoing>Flow_15ydxkd</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -56,7 +56,7 @@
       <bpmn:outgoing>Flow_1m53k5y</bpmn:outgoing>
       <bpmn:outgoing>Flow_09rj8jh</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:serviceTask id="Activity_03ke3mp" name="Update booking record" camunda:asyncBefore="true" implementation="##WebService" camunda:class="mts.mtech.delegates.UpdateBookingService">
+    <bpmn:serviceTask id="Activity_03ke3mp" name="Update booking record" camunda:asyncBefore="true" implementation="##WebService" camunda:delegateExpression="${UpdateBookingService}">
       <bpmn:incoming>Flow_09rj8jh</bpmn:incoming>
       <bpmn:outgoing>Flow_1o5rz84</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -75,11 +75,11 @@
       <bpmn:inputSet />
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0n33kj7" sourceRef="Activity_157jbev" targetRef="Event_1eguvwt" />
-    <bpmn:serviceTask id="Activity_157jbev" name="Update booking record" camunda:asyncBefore="true" implementation="##WebService" camunda:class="mts.mtech.delegates.UpdateBookingService">
+    <bpmn:serviceTask id="Activity_157jbev" name="Update booking record" camunda:asyncBefore="true" implementation="##WebService" camunda:delegateExpression="${UpdateBookingService}">
       <bpmn:incoming>Flow_1bvoz8s</bpmn:incoming>
       <bpmn:outgoing>Flow_0n33kj7</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_1qpl9th" name="Create Booking" camunda:asyncBefore="true" implementation="##WebService" camunda:class="mts.mtech.delegates.CreateBookingService">
+    <bpmn:serviceTask id="Activity_1qpl9th" name="Create Booking" camunda:asyncBefore="true" implementation="##WebService" camunda:delegateExpression="${CreateBookingService}">
       <bpmn:incoming>Flow_0n9ngkx</bpmn:incoming>
       <bpmn:outgoing>Flow_0unxlxc</bpmn:outgoing>
     </bpmn:serviceTask>

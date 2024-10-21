@@ -60,6 +60,12 @@
     </dependency>
 
     <dependency>
+      <groupId>mts.mtech</groupId>
+      <artifactId>error-handling</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
     </dependency>

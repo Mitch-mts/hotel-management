@@ -5,7 +5,7 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "GenerateBusinessKeyService")
 @Slf4j
 public class GenerateBusinessKeyService implements JavaDelegate {
     @Override

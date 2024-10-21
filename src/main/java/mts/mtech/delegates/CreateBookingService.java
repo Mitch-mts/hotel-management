@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Component
+@Component(value = "CreateBookingService")
 @Slf4j
 public class CreateBookingService implements JavaDelegate {
     private final BookingRepository bookingRepository;
@@ -44,7 +44,7 @@ public class CreateBookingService implements JavaDelegate {
 
             Booking bookingResult = bookingRepository.save(booking);
             log.info("booking result {}", bookingResult);
-            delegateExecution.setVariable("bookingId", bookingResult.getId());
+            delegateExecution.setVariable("booking", bookingResult);
         } catch (Exception e) {
             log.error("CreateBookingService error------->{}",e.getMessage());
             String message = "CreateBookingService error------->" + e.getMessage();

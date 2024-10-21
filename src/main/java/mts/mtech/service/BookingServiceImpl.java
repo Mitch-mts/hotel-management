@@ -31,7 +31,6 @@ public class BookingServiceImpl implements BookingService{
 
         log.info("mapped variables---->{}", variables);
 
-
         runtimeService.createProcessInstanceByKey("BookingProcessId")
                 .setVariables(variables)
                 .startBeforeActivity("StartEvent_1")

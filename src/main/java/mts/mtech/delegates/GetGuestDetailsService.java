@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-@Component
+@Component(value = "GetGuestDetailsService")
 @Slf4j
 public class GetGuestDetailsService implements JavaDelegate {
     private final GuestRepository guestRepository;
