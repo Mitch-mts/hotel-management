@@ -1,5 +1,50 @@
 {
-  "components": [],
+  "components": [
+    {
+      "label": "Guest Name",
+      "type": "textfield",
+      "id": "Field_0z1x525",
+      "key": "field_13nzb6f",
+      "defaultValue": "name"
+    },
+    {
+      "label": "Room Type",
+      "type": "textfield",
+      "id": "Field_0bzgeee",
+      "key": "field_1wsy0lp",
+      "defaultValue": "${roomType}"
+    },
+    {
+      "label": "Days of Stay",
+      "type": "textfield",
+      "id": "Field_1keu6j9",
+      "key": "field_1io1b19",
+      "defaultValue": "${daysOfStay}"
+    },
+    {
+      "label": "Guest Age",
+      "type": "textfield",
+      "id": "Field_1yl0iqh",
+      "key": "field_167sfs5",
+      "defaultValue": "${age}"
+    },
+    {
+      "action": "submit",
+      "label": "Approve",
+      "type": "button",
+      "id": "Field_04ozqr4",
+      "key": "field_0mt9k02",
+      "properties": {}
+    },
+    {
+      "action": "submit",
+      "label": "Reject",
+      "type": "button",
+      "id": "Field_1j818nd",
+      "key": "field_1pl6ngb",
+      "properties": {}
+    }
+  ],
   "type": "default",
   "id": "approval_form",
   "exporter": {
