@@ -9,11 +9,6 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "guest")
-@TableGenerator(name = "guest_id_generator",
-        table = "id_generator",
-        pkColumnName = "id_name",
-        pkColumnValue = "guest",
-        valueColumnName = "id_value")
 @Getter
 @Setter
 @ToString

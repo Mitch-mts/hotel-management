@@ -30,11 +30,6 @@
       <bpmn:incoming>Flow_0enyy2q</bpmn:incoming>
       <bpmn:outgoing>Flow_0hz9anr</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:userTask id="bookingDetails" name="Check Booking details" camunda:asyncBefore="true" implementation="##unspecified" camunda:formRef="approval_form" camunda:formRefBinding="latest">
-      <bpmn:extensionElements />
-      <bpmn:incoming>Flow_1m53k5y</bpmn:incoming>
-      <bpmn:outgoing>Flow_19e4wmh</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:serviceTask id="Activity_15hjrwh" name="Process Payment" camunda:asyncBefore="true" implementation="##WebService" camunda:delegateExpression="${ProcessPaymentService}">
       <bpmn:incoming>Flow_12hmfdn</bpmn:incoming>
       <bpmn:outgoing>Flow_0dov4c8</bpmn:outgoing>
@@ -101,16 +96,20 @@
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_19e4wmh" sourceRef="bookingDetails" targetRef="Gateway_0vv9en9" />
     <bpmn:sequenceFlow id="Flow_12hmfdn" name="Yes" sourceRef="Gateway_0vv9en9" targetRef="Activity_15hjrwh">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{approved=="Yes"}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved == "Yes"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1bvoz8s" name="No" sourceRef="Gateway_0vv9en9" targetRef="Activity_157jbev">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{approved=="No"}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved == "No"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0dov4c8" sourceRef="Activity_15hjrwh" targetRef="Event_0muhzo2" />
     <bpmn:sequenceFlow id="Flow_0jgr4i3" name="No" sourceRef="Gateway_1psb54v" targetRef="Activity_0kuu5zi">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{accepted=="No"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0fmy2r3" sourceRef="Activity_1jgg9ce" targetRef="Gateway_1psb54v" />
+    <bpmn:serviceTask id="bookingDetails" name="Verify Booking details" camunda:asyncBefore="true" implementation="##unspecified" camunda:delegateExpression="${VerifyBookingService}">
+      <bpmn:incoming>Flow_1m53k5y</bpmn:incoming>
+      <bpmn:outgoing>Flow_19e4wmh</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:textAnnotation id="TextAnnotation_1x8r15s">
       <bpmn:text>Get Guest Booking details and save to DB</bpmn:text>
     </bpmn:textAnnotation>
@@ -168,12 +167,6 @@
         <dc:Bounds x="1240" y="207" width="100" height="80" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1255.5" y="239.6" width="69" height="18.8" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Yaoqiang-Activity_06v59sf" bpmnElement="bookingDetails">
-        <dc:Bounds x="1690" y="207" width="100" height="80" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1695.5" y="232.6" width="89" height="32.8" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Yaoqiang-Activity_15hjrwh" bpmnElement="Activity_15hjrwh">
@@ -271,6 +264,10 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1440" y="319.1" width="205" height="18.8" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0k10qk4_di" bpmnElement="bookingDetails">
+        <dc:Bounds x="1690" y="207" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Yaoqiang-Flow_1o5rz84" bpmnElement="Flow_1o5rz84">
         <di:waypoint x="1508" y="430" />

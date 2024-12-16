@@ -21,6 +21,7 @@ public class ProcessPaymentService implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
+        log.info("process payments ------ approved: {}", delegateExecution.getVariable("approved"));
 
         Booking booking = (Booking) delegateExecution.getVariable("booking");
         var bookingData = bookingRepository.findById(booking.getId()).orElseThrow(() -> new RecordNotFoundException(Constants.NOT_FOUND));

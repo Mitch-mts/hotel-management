@@ -4,29 +4,25 @@
       "label": "Guest Name",
       "type": "textfield",
       "id": "Field_0z1x525",
-      "key": "field_13nzb6f",
-      "defaultValue": "name"
+      "key": "name"
     },
     {
-      "label": "Room Type",
+      "label": "Room Type Available",
       "type": "textfield",
       "id": "Field_0bzgeee",
-      "key": "field_1wsy0lp",
-      "defaultValue": "${roomType}"
+      "key": "roomAvailable"
     },
     {
       "label": "Days of Stay",
       "type": "textfield",
       "id": "Field_1keu6j9",
-      "key": "field_1io1b19",
-      "defaultValue": "${daysOfStay}"
+      "key": "daysOfStay"
     },
     {
       "label": "Guest Age",
       "type": "textfield",
       "id": "Field_1yl0iqh",
-      "key": "field_167sfs5",
-      "defaultValue": "${age}"
+      "key": "age"
     },
     {
       "action": "submit",
@@ -34,7 +30,13 @@
       "type": "button",
       "id": "Field_04ozqr4",
       "key": "field_0mt9k02",
-      "properties": {}
+      "properties": {},
+      "onClick": {
+        "setVariable": {
+          "key": "approved",
+          "value": "Yes"
+        }
+      }
     },
     {
       "action": "submit",
@@ -42,7 +44,13 @@
       "type": "button",
       "id": "Field_1j818nd",
       "key": "field_1pl6ngb",
-      "properties": {}
+      "properties": {},
+       "onClick": {
+        "setVariable": {
+          "key": "approved",
+          "value": "No"
+        }
+      }
     }
   ],
   "type": "default",

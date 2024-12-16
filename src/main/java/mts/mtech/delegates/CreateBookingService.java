@@ -35,12 +35,12 @@ public class CreateBookingService implements JavaDelegate {
             Guest guest = guestRepository.getReferenceById(guestId);
 
             Booking booking = Booking.builder()
-                    .bookingStatus(BookingStatus.ACTIVE)
-                    .bookingOpenDate(LocalDateTime.now())
-                    .roomType(roomType)
-                    .daysOfStay(daysOfStay)
-                    .guest(guest)
-                    .build();
+                            .bookingStatus(BookingStatus.ACTIVE)
+                            .bookingOpenDate(LocalDateTime.now())
+                            .roomType(roomType)
+                            .daysOfStay(daysOfStay)
+                            .guest(guest)
+                            .build();
 
             Booking bookingResult = bookingRepository.save(booking);
             log.info("booking result {}", bookingResult);

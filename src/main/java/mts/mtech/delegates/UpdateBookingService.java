@@ -24,6 +24,7 @@ public class UpdateBookingService implements JavaDelegate {
     public void execute(DelegateExecution delegateExecution) throws Exception {
         Booking bookingData = (Booking) delegateExecution.getVariable("booking");
         String payment = (String) delegateExecution.getVariable("payment");
+        log.info("update booking ------- approved: {}", delegateExecution.getVariable("approved"));
 
         Booking booking = bookingRepository.findById(bookingData.getId())
                 .orElseThrow(() -> new RecordNotFoundException(Constants.NOT_FOUND));

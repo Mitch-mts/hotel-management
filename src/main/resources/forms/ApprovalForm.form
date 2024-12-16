@@ -30,8 +30,12 @@
       "type": "button",
       "id": "Field_04ozqr4",
       "key": "field_0mt9k02",
-      "properties": {
-        "approved": "Yes"
+      "properties": {},
+      "onClick": {
+        "setVariable": {
+          "key": "approved",
+          "value": "Yes"
+        }
       }
     },
     {
@@ -40,8 +44,12 @@
       "type": "button",
       "id": "Field_1j818nd",
       "key": "field_1pl6ngb",
-      "properties": {
-        "approved": "No"
+      "properties": {},
+       "onClick": {
+        "setVariable": {
+          "key": "approved",
+          "value": "No"
+        }
       }
     }
   ],

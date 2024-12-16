@@ -12,11 +12,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "booking")
-@TableGenerator(name = "booking_id_generator",
-        table = "id_generator",
-        pkColumnName = "id_name",
-        pkColumnValue = "booking",
-        valueColumnName = "id_value")
 @Getter
 @Setter
 @ToString
