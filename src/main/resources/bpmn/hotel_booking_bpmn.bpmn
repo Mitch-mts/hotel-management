@@ -100,14 +100,10 @@
       <bpmn:incoming>Flow_1dz4tck</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1dz4tck" name="No" sourceRef="Gateway_0wm4cld" targetRef="Event_0rzkehq" />
-    <bpmn:serviceTask id="Activity_1dfrlcj" name="Search Room availability">
+    <bpmn:serviceTask id="Activity_1dfrlcj" name="Search Room availability" camunda:delegateExpression="${RoomEnquiryService}">
       <bpmn:incoming>Flow_0e04ri3</bpmn:incoming>
       <bpmn:outgoing>Flow_01f5i3q</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:task id="Activity_18o554s" name="Display Available Rooms">
-      <bpmn:incoming>Flow_1pt47fx</bpmn:incoming>
-      <bpmn:outgoing>Flow_0yjfdu5</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_0yjfdu5" sourceRef="Activity_18o554s" targetRef="Gateway_0684ong" />
     <bpmn:exclusiveGateway id="Gateway_0684ong" name="Is Room Chosen?">
       <bpmn:incoming>Flow_0yjfdu5</bpmn:incoming>
@@ -124,6 +120,10 @@
       <bpmn:incoming>Flow_0clcfra</bpmn:incoming>
       <bpmn:outgoing>Flow_1vz86o3</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_18o554s" name="Display Available Rooms">
+      <bpmn:incoming>Flow_1pt47fx</bpmn:incoming>
+      <bpmn:outgoing>Flow_0yjfdu5</bpmn:outgoing>
+    </bpmn:userTask>
     <bpmn:textAnnotation id="TextAnnotation_1x8r15s">
       <bpmn:text>Get Guest Booking details and save to DB</bpmn:text>
     </bpmn:textAnnotation>
@@ -142,58 +142,17 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Yaoqiang_Diagram-BookingProcessId" name="Untitled Diagram" resolution="96">
     <bpmndi:BPMNPlane bpmnElement="BookingProcessId">
-      <bpmndi:BPMNShape id="Yaoqiang-TextAnnotation_1x8r15s" bpmnElement="TextAnnotation_1x8r15s">
-        <dc:Bounds x="1200" y="80" width="100" height="55" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="370" y="70.1" width="246" height="18.8" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Yaoqiang-TextAnnotation_1298e4k" bpmnElement="TextAnnotation_1298e4k">
-        <dc:Bounds x="1460" y="120" width="90" height="84" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Yaoqiang-TextAnnotation_0a63fdt" bpmnElement="TextAnnotation_0a63fdt">
-        <dc:Bounds x="2730" y="380" width="100" height="55" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1780" y="319.1" width="227" height="18.8" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Yaoqiang-TextAnnotation_0tyh4qv" bpmnElement="TextAnnotation_0tyh4qv">
-        <dc:Bounds x="2190" y="500" width="100" height="55" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1440" y="319.1" width="205" height="18.8" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Yaoqiang-StartEvent_1" bpmnElement="StartEvent_1">
         <dc:Bounds x="154" y="229" width="32" height="32" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="192" y="199.6" width="6" height="18.8" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0wm4cld_di" bpmnElement="Gateway_0wm4cld" isMarkerVisible="true">
-        <dc:Bounds x="405" y="220" width="50" height="50" />
+      <bpmndi:BPMNShape id="Yaoqiang-Event_0muhzo2" bpmnElement="Event_0muhzo2">
+        <dc:Bounds x="2954" y="231" width="32" height="32" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="406" y="190" width="50" height="27" />
+          <dc:Bounds x="1975" y="199.6" width="6" height="18.8" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0rzkehq_di" bpmnElement="Event_0rzkehq">
-        <dc:Bounds x="412" y="342" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0p7kmc2_di" bpmnElement="Activity_1dfrlcj">
-        <dc:Bounds x="230" y="205" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0684ong_di" bpmnElement="Gateway_0684ong" isMarkerVisible="true">
-        <dc:Bounds x="735" y="220" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="715" y="196" width="89" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_17knda1_di" bpmnElement="Event_17knda1">
-        <dc:Bounds x="742" y="342" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1g98ouk_di" bpmnElement="Activity_1owqtef">
-        <dc:Bounds x="890" y="205" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Yaoqiang-Activity_1ccu5vy" bpmnElement="Activity_1ccu5vy">
         <dc:Bounds x="1080" y="205" width="100" height="80" />
@@ -205,12 +164,6 @@
         <dc:Bounds x="1280" y="205" width="100" height="80" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1288.5" y="230.6" width="83" height="32.8" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Yaoqiang-Event_0muhzo2" bpmnElement="Event_0muhzo2">
-        <dc:Bounds x="2954" y="231" width="32" height="32" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1975" y="199.6" width="6" height="18.8" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Yaoqiang-Activity_1jgg9ce" bpmnElement="Activity_1jgg9ce">
@@ -265,31 +218,56 @@
         <dc:Bounds x="2290" y="207" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18o554s_di" bpmnElement="Activity_18o554s">
-        <dc:Bounds x="540" y="205" width="100" height="80" />
+      <bpmndi:BPMNShape id="Gateway_0wm4cld_di" bpmnElement="Gateway_0wm4cld" isMarkerVisible="true">
+        <dc:Bounds x="405" y="220" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="406" y="190" width="50" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rzkehq_di" bpmnElement="Event_0rzkehq">
+        <dc:Bounds x="412" y="342" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0p7kmc2_di" bpmnElement="Activity_1dfrlcj">
+        <dc:Bounds x="230" y="205" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0684ong_di" bpmnElement="Gateway_0684ong" isMarkerVisible="true">
+        <dc:Bounds x="735" y="220" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="715" y="196" width="89" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_17knda1_di" bpmnElement="Event_17knda1">
+        <dc:Bounds x="742" y="342" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1g98ouk_di" bpmnElement="Activity_1owqtef">
+        <dc:Bounds x="890" y="205" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Yaoqiang-Association_1dx59c6" bpmnElement="Association_1dx59c6">
-        <di:waypoint x="1165" y="205" />
-        <di:waypoint x="1226" y="135" />
+      <bpmndi:BPMNShape id="Yaoqiang-TextAnnotation_1x8r15s" bpmnElement="TextAnnotation_1x8r15s">
+        <dc:Bounds x="1200" y="80" width="100" height="55" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="373.28" y="111.6" width="6" height="18.8" />
+          <dc:Bounds x="370" y="70.1" width="246" height="18.8" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Yaoqiang-Association_1z0swrx" bpmnElement="Association_1z0swrx">
-        <di:waypoint x="1380" y="222" />
-        <di:waypoint x="1460" y="183" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Yaoqiang-TextAnnotation_1298e4k" bpmnElement="TextAnnotation_1298e4k">
+        <dc:Bounds x="1460" y="120" width="90" height="84" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Yaoqiang-TextAnnotation_0a63fdt" bpmnElement="TextAnnotation_0a63fdt">
+        <dc:Bounds x="2730" y="380" width="100" height="55" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="550.06" y="134.91" width="6" height="18.8" />
+          <dc:Bounds x="1780" y="319.1" width="227" height="18.8" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Yaoqiang-Association_1keii6n" bpmnElement="Association_1keii6n">
-        <di:waypoint x="2147" y="430" />
-        <di:waypoint x="2213" y="500" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Yaoqiang-TextAnnotation_0tyh4qv" bpmnElement="TextAnnotation_0tyh4qv">
+        <dc:Bounds x="2190" y="500" width="100" height="55" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1412" y="313.85" width="6" height="18.8" />
+          <dc:Bounds x="1440" y="319.1" width="205" height="18.8" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1x7vmrb_di" bpmnElement="Activity_18o554s">
+        <dc:Bounds x="540" y="205" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Yaoqiang-Flow_1o5rz84" bpmnElement="Flow_1o5rz84">
         <di:waypoint x="2108" y="430" />
         <di:waypoint x="2108" y="524" />
@@ -408,6 +386,27 @@
       <bpmndi:BPMNEdge id="Flow_1vz86o3_di" bpmnElement="Flow_1vz86o3">
         <di:waypoint x="990" y="245" />
         <di:waypoint x="1080" y="245" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Yaoqiang-Association_1dx59c6" bpmnElement="Association_1dx59c6">
+        <di:waypoint x="1165" y="205" />
+        <di:waypoint x="1226" y="135" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="373.28" y="111.6" width="6" height="18.8" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Yaoqiang-Association_1z0swrx" bpmnElement="Association_1z0swrx">
+        <di:waypoint x="1380" y="222" />
+        <di:waypoint x="1460" y="183" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="550.06" y="134.91" width="6" height="18.8" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Yaoqiang-Association_1keii6n" bpmnElement="Association_1keii6n">
+        <di:waypoint x="2147" y="430" />
+        <di:waypoint x="2213" y="500" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1412" y="313.85" width="6" height="18.8" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
