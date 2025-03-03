@@ -10,6 +10,6 @@ import org.springframework.stereotype.Component;
 public class RoomEnquiryService implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-
+        delegateExecution.setVariable("roomAvailable", "Yes");
     }
 }

@@ -90,40 +90,48 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{accepted=="No"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_01f5i3q" sourceRef="Activity_1dfrlcj" targetRef="Gateway_0wm4cld" />
-    <bpmn:exclusiveGateway id="Gateway_0wm4cld" name="Is Room Available?">
+    <bpmn:exclusiveGateway id="Gateway_0wm4cld" name="Is Room Available?" camunda:asyncBefore="true">
       <bpmn:incoming>Flow_01f5i3q</bpmn:incoming>
       <bpmn:outgoing>Flow_1pt47fx</bpmn:outgoing>
       <bpmn:outgoing>Flow_1dz4tck</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_1pt47fx" name="Yes" sourceRef="Gateway_0wm4cld" targetRef="Activity_18o554s" />
+    <bpmn:sequenceFlow id="Flow_1pt47fx" name="Yes" sourceRef="Gateway_0wm4cld" targetRef="Activity_18o554s">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{roomAvailable=='Yes'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:endEvent id="Event_0rzkehq">
       <bpmn:incoming>Flow_1dz4tck</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1dz4tck" name="No" sourceRef="Gateway_0wm4cld" targetRef="Event_0rzkehq" />
-    <bpmn:serviceTask id="Activity_1dfrlcj" name="Search Room availability" camunda:delegateExpression="${RoomEnquiryService}">
+    <bpmn:sequenceFlow id="Flow_1dz4tck" name="No" sourceRef="Gateway_0wm4cld" targetRef="Event_0rzkehq">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{roomAvailable=='No'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="Activity_1dfrlcj" name="Search Room availability" camunda:asyncBefore="true" camunda:delegateExpression="${RoomEnquiryService}">
       <bpmn:incoming>Flow_0e04ri3</bpmn:incoming>
       <bpmn:outgoing>Flow_01f5i3q</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0yjfdu5" sourceRef="Activity_18o554s" targetRef="Gateway_0684ong" />
-    <bpmn:exclusiveGateway id="Gateway_0684ong" name="Is Room Chosen?">
+    <bpmn:exclusiveGateway id="Gateway_0684ong" name="Is Room Chosen?" camunda:asyncBefore="true">
       <bpmn:incoming>Flow_0yjfdu5</bpmn:incoming>
       <bpmn:outgoing>Flow_0clcfra</bpmn:outgoing>
       <bpmn:outgoing>Flow_0kw3x4o</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0clcfra" name="Yes" sourceRef="Gateway_0684ong" targetRef="Activity_1owqtef" />
+    <bpmn:sequenceFlow id="Flow_0clcfra" name="Yes" sourceRef="Gateway_0684ong" targetRef="Activity_1owqtef">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{roomTaken=='Yes'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:endEvent id="Event_17knda1">
       <bpmn:incoming>Flow_0kw3x4o</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0kw3x4o" name="No" sourceRef="Gateway_0684ong" targetRef="Event_17knda1" />
+    <bpmn:sequenceFlow id="Flow_0kw3x4o" name="No" sourceRef="Gateway_0684ong" targetRef="Event_17knda1">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{roomTaken=='No'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1vz86o3" sourceRef="Activity_1owqtef" targetRef="Activity_1ccu5vy" />
-    <bpmn:serviceTask id="Activity_1owqtef" name="Create Booking" camunda:delegateExpression="${CreateBookingService}">
+    <bpmn:serviceTask id="Activity_1owqtef" name="Create Booking" camunda:asyncBefore="true" camunda:delegateExpression="${CreateBookingService}">
       <bpmn:incoming>Flow_0clcfra</bpmn:incoming>
       <bpmn:outgoing>Flow_1vz86o3</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Activity_18o554s" name="Display Available Rooms">
+    <bpmn:serviceTask id="Activity_18o554s" name="Display Available Rooms" camunda:asyncBefore="true" camunda:delegateExpression="${DisplayAvailableRoomsService}">
       <bpmn:incoming>Flow_1pt47fx</bpmn:incoming>
       <bpmn:outgoing>Flow_0yjfdu5</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:serviceTask>
     <bpmn:textAnnotation id="TextAnnotation_1x8r15s">
       <bpmn:text>Get Guest Booking details and save to DB</bpmn:text>
     </bpmn:textAnnotation>
@@ -265,7 +273,7 @@
           <dc:Bounds x="1440" y="319.1" width="205" height="18.8" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1x7vmrb_di" bpmnElement="Activity_18o554s">
+      <bpmndi:BPMNShape id="Activity_1uid6t2_di" bpmnElement="Activity_18o554s">
         <dc:Bounds x="540" y="205" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Yaoqiang-Flow_1o5rz84" bpmnElement="Flow_1o5rz84">
