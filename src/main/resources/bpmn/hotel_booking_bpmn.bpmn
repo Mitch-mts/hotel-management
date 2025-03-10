@@ -128,10 +128,10 @@
       <bpmn:incoming>Flow_0clcfra</bpmn:incoming>
       <bpmn:outgoing>Flow_1vz86o3</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_18o554s" name="Display Available Rooms" camunda:asyncBefore="true" camunda:delegateExpression="${DisplayAvailableRoomsService}">
+    <bpmn:userTask id="Activity_18o554s" name="Display Available Rooms" camunda:asyncBefore="true">
       <bpmn:incoming>Flow_1pt47fx</bpmn:incoming>
       <bpmn:outgoing>Flow_0yjfdu5</bpmn:outgoing>
-    </bpmn:serviceTask>
+    </bpmn:userTask>
     <bpmn:textAnnotation id="TextAnnotation_1x8r15s">
       <bpmn:text>Get Guest Booking details and save to DB</bpmn:text>
     </bpmn:textAnnotation>
@@ -273,7 +273,7 @@
           <dc:Bounds x="1440" y="319.1" width="205" height="18.8" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1uid6t2_di" bpmnElement="Activity_18o554s">
+      <bpmndi:BPMNShape id="Activity_0244yun_di" bpmnElement="Activity_18o554s">
         <dc:Bounds x="540" y="205" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Yaoqiang-Flow_1o5rz84" bpmnElement="Flow_1o5rz84">

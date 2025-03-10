@@ -31,4 +31,5 @@ public class BookingController {
         bookingService.bookingService(request);
         return "Success";
     }
+
 }
