@@ -1,4 +1,3 @@
-import BpmnJS from 'bpmn-js'
 function createPluginTable(id, options, results) {
     const table = document.createElement("table");
     table.id = id;

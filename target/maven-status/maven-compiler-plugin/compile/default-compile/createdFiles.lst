@@ -1,12 +1,16 @@
 mts\mtech\Application.class
+mts\mtech\delegates\VerifyBookingService.class
+mts\mtech\utils\Constants.class
 mts\mtech\domain\Room.class
 mts\mtech\persistence\BaseRepository.class
 mts\mtech\domain\Guest.class
 mts\mtech\delegates\ProcessPaymentService.class
 mts\mtech\persistence\BookingRepository.class
 mts\mtech\persistence\GuestRepository.class
+mts\mtech\controller\TaskController.class
 mts\mtech\delegates\GenerateBusinessKeyService.class
 mts\mtech\domain\Guest$GuestBuilder.class
+mts\mtech\delegates\DisplayAvailableRoomsService.class
 mts\mtech\dto\BookingDto$BookingDtoBuilder.class
 mts\mtech\status\BookingStatus.class
 mts\mtech\delegates\UpdateBookingService.class
@@ -18,6 +22,7 @@ mts\mtech\controller\BookingController.class
 mts\mtech\domain\Room$RoomBuilder.class
 mts\mtech\enums\RoomType.class
 mts\mtech\service\BookingServiceImpl.class
+mts\mtech\delegates\RoomEnquiryService.class
 mts\mtech\delegates\CreateBookingService.class
 mts\mtech\delegates\GetGuestDetailsService.class
 mts\mtech\domain\Booking.class
